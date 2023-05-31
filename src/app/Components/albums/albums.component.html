@@ -1,0 +1,57 @@
+<nav class="bg-primary d-flex justify-content-around">
+  <div class="text">{{User.name}}</div>|
+  <div>
+  <div class="text">{{User.email}}</div>
+  <div class="text">{{User.phone}}</div>
+  </div>|
+  <div>
+  <div class="text">Address</div>
+  <div class="text">{{User.address.suite}}, {{User.address.street}} ST, {{User.address.city}}</div>
+  </div>
+</nav>
+
+<div class="bg-light text-center fs-4 mb-2">{{User.name}}'s Albums</div>
+
+<div class="table-responsive">
+  <table class="w-75 table table-success table-hover border-primary text-center m-auto">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of AllAlbums" (click)="go2Photos(a.id)">
+        <td> <img src="assets\cover.jpg" class="card-img-top m-auto" alt="..." style="width: 150px; height: 150px;"></td>
+        <td><p class="card-text">{{a.title}}</p></td>
+
+      </tr>
+    </tbody>
+</table>
+</div>
+<!-- ============================================================ -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="displayAlert">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">All Photos</h4>
+        <button type="button" class="btn btn-success" (click)="close()">
+          X
+        </button>
+      </div>
+      <div class="modal-body d-flex justify-content-center flex-wrap">
+      <!-- ============================================================ -->
+<div *ngFor="let p of AllPhotos">
+  <img src = {{p.url}} class="card-img-top" alt={{p.id}} style="width: 150px; height: 150px;">
+</div>
+      <!-- ============================================================ -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="close()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

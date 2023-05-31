@@ -1,0 +1,66 @@
+<app-home></app-home>
+<!-- ============================================================ -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="displayForm">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{ action }}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="m-auto" [ngClass]="action == 'DETAILS' ? 'pe-none' : 'pe-auto'">
+          <div class="col-sm-6 m-auto">
+            <label class="form-label">Name</label>
+            <input (keypress)="keyPressCharacters($event)" [(ngModel)]="user.name" type="text" class="form-control"
+              placeholder="Name" maxlength="20" required />
+            <p [ngClass]="user.name.length < 3 && user.name? 'd-flex text-danger justify-content-center fst-italic':'d-none'">MUST more than 3 char</p>
+          </div>
+          <div class="col-sm-6 m-auto">
+            <label class="form-label">Email</label>
+            <input (keypress)="emailChecker($event)" [(ngModel)]="user.email" type="email" class="form-control"
+              placeholder="Email" required />
+            <!-- <p [ngClass]=" (emailChecker && user.email)?'d-flex text-danger justify-content-center fst-italic':'d-none'" >plz enter correct email</p> -->
+          </div>
+          <div class="col-sm-6 m-auto">
+            <label class="form-label">Phone</label>
+            <input (keypress)="keyPressNumbers($event)" [(ngModel)]="user.phone" type="text" class="form-control"
+              placeholder="Phone" maxlength="11" minlength="8" required />
+          </div>
+          <div class="col-sm-6 m-auto">
+            <label class="form-label">Address</label>
+            <input [(ngModel)]="user.address.city" type="text" class="form-control" placeholder="City" required />
+            <input [(ngModel)]="user.address.street" type="text" class="form-control" placeholder="Street" required />
+            <input [(ngModel)]="user.address.suite" type="text" class="form-control" placeholder="Suite" required />
+          </div>
+          </div>
+      </div>
+
+      <div class="modal-footer">
+        <input type="button" class="btn btn-warning" *ngIf="action != 'DETAILS'" value="{{ action }}"
+          (click)="actionFun(action)" />
+          <button type="button" class="btn btn-primary" *ngIf="action == 'DETAILS'" routerLink="/users/{{user.id}}/albums">Go To Albums</button>
+        <button type="button" class="btn btn-success" (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============================================================ -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="displayAlert">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Alert</h4>
+      </div>
+      <div class="modal-body">
+        Do you want to delete this user :{{ user.name }}
+      </div>
+      <div class="modal-footer">
+        <input type="button" class="btn btn-danger" value="{{ action }}" (click)="actionFun(action)" />
+        <button type="button" class="btn btn-success" (click)="closePopup()" [routerLink]="['/users']">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

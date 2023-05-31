@@ -1,0 +1,19 @@
+<app-home></app-home>
+<!-- ============================================================ -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="displayAlert">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Error</h4>
+      </div>
+      <div class="modal-body">
+        error works!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="closePopup()" [routerLink]="['/students']">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

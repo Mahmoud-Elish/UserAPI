@@ -1,0 +1,35 @@
+
+<nav class="bg-primary mb-3 d-flex  justify-content-around p-2">
+  <div class="fs-3 text">Users</div>
+  <button type="button" class="btn btn-light m-1 fw-bold" routerLink="/add">+ Add</button>
+
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="table-responsive">
+      <table class="w-100 table table-dark  table-hover border-primary text-center m-auto">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Number</th>
+            <th scope="col">City</th>
+            <th colspan="3" class="text-primary">More Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of AllUsers">
+            <td>{{u.name}}</td>
+            <td>{{u.email}}</td>
+            <td>{{u.phone}}</td>
+            <td>{{u.address.city}}</td>
+            <td><button type="button" class="btn btn-outline-info" [routerLink]="['/users/details', u.id]" >Details</button></td>
+            <td><button type="button" class="btn btn-outline-warning" [routerLink]="['/users/update', u.id]">Update</button></td>
+            <td><button type="button" class="btn btn-outline-danger" [routerLink]="['/users/delete', u.id]">Delete</button></td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+  </div>
+
+</div>
