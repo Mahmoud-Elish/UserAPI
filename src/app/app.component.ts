@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Users';
+
+  // userObj:{name:any,email:any,phone:any,address:any}={
+  //   name: "",
+  //   email: "",
+  //   phone: "",
+  //   address: ""
+  // };
+  // setObj(obj:{name:any,email:any,phone:any,address:any}){
+  //   this.userObj=obj;
+
+  // }
 }

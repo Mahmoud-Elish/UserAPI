@@ -11,8 +11,8 @@ const routes: Routes = [
 
   {
     path: 'add',
-    component: ActionsComponent,
-    data: { action: 'ADD' },
+    component: HomeComponent,
+    //data: { action: 'ADD' },
   },
   {
     path: 'users/details/:id',

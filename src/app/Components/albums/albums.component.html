@@ -1,4 +1,4 @@
-<nav class="bg-primary d-flex justify-content-around">
+<nav class="bg-info d-flex justify-content-around fs-5">
   <div class="text">{{User.name}}</div>|
   <div>
   <div class="text">{{User.email}}</div>
@@ -10,25 +10,25 @@
   </div>
 </nav>
 
-<div class="bg-light text-center fs-4 mb-2">{{User.name}}'s Albums</div>
+<div class="bg-light text-center fs-4 mb-2">{{User.name}}'s Albums
 
-<div class="table-responsive">
-  <table class="w-75 table table-success table-hover border-primary text-center m-auto">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Title</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let a of AllAlbums" (click)="go2Photos(a.id)">
-        <td> <img src="assets\cover.jpg" class="card-img-top m-auto" alt="..." style="width: 150px; height: 150px;"></td>
-        <td><p class="card-text">{{a.title}}</p></td>
-
-      </tr>
-    </tbody>
-</table>
+  <span class="position-sticky start-100 fs-5 text-success">{{AllAlbums.length}} Album</span>
 </div>
+
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 w-75 m-auto">
+  <div class="col" *ngFor="let a of AllAlbums" (click)="go2Photos(a.id)">
+    <div class="card">
+          <img src="assets\cover.jpg" class="card-img-top" alt="Hollywood Sign on The Hill">
+      <div class="card-body">
+        <h5 class="card-title"> {{a.title}}</h5>
+        <!-- <p class="card-text">
+          {{a.title}}
+        </p> -->
+      </div>
+    </div>
+  </div>
+
 <!-- ============================================================ -->
 <div class="modal" tabindex="-1" role="dialog" [ngClass]="displayAlert">
   <div class="modal-dialog modal-lg" role="document">
@@ -47,6 +47,7 @@
       <!-- ============================================================ -->
       </div>
       <div class="modal-footer">
+        <span class="position-sticky end-100 fs-5 text-success">{{AllPhotos.length}} photo</span>
         <button type="button" class="btn btn-success" (click)="close()">
           Close
         </button>
@@ -55,3 +56,13 @@
   </div>
 </div>
 
+<style>
+  .card:hover{
+     transform: scale(1.02);
+     background: linear-gradient(
+        45deg,
+        hsla(168, 85%, 52%, 0.5),
+        hsla(263, 88%, 45%, 0.5) 100%
+      );
+}
+</style>

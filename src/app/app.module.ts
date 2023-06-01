@@ -11,6 +11,7 @@ import { ActionsComponent } from './Components/actions/actions.component';
 import { AlbumsComponent } from './Components/albums/albums.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { AlbumsComponent } from './Components/albums/albums.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

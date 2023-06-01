@@ -15,6 +15,7 @@ export class AlbumsComponent {
   User:any;
   AllPhotos:any;
 
+
   constructor(
     protected userService: UserService,
     private activeRoute: ActivatedRoute
@@ -23,14 +24,13 @@ export class AlbumsComponent {
     this.activeRoute.params.subscribe((params) => {
       this.userId = params['id'];
       this.get(params['id']);
-      //console.log("the id is ====>"+ this.userId);
     });
     this.userService.getUserByID(this.userId).subscribe({
       next:(data)=>{ this.User = data; },
       error:(err)=>{console.log(err)}
     })
     this.userService.getAllAlbumsByID(this.userId).subscribe({
-      next:(data)=>{ this.AllAlbums = data; },
+      next:(data)=>{this.AllAlbums = data;},
       error:(err)=>{console.log(err)}
     })
 
@@ -41,7 +41,6 @@ export class AlbumsComponent {
     });
   }
   go2Photos(aid:number){
-    console.log("=====>"+aid)
     this.userService.getAllPhotosByID(aid).subscribe({
       next:(data)=>{ this.AllPhotos = data; },
       error:(err)=>{console.log(err)}

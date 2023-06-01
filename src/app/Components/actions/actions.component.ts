@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
 @Component({
@@ -50,24 +50,6 @@ export class ActionsComponent {
     }
   }
 
-  add() {
-    let newUser = {
-      name: this.user.name,
-      email: this.user.email,
-      phone: this.user.phone,
-    };
-    if (this.user.name.length > 3) {
-      this.userService.addUser(newUser).subscribe({
-        next: () => {
-          this.router.navigate(['/home']);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
-    }
-
-  }
   get(id: any) {
     this.userService.getUserByID(id).subscribe((data: any) => {
       this.user = data;
@@ -98,9 +80,9 @@ export class ActionsComponent {
 
   actionFun(act: any) {
     switch (act) {
-      case 'ADD':
-        this.add();
-        break;
+      // case 'ADD':
+      //   this.add();
+      //   break;
       case 'UPDATE':
         this.update();
         break;

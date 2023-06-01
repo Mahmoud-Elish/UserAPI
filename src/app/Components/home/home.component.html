@@ -1,7 +1,7 @@
 
 <nav class="bg-primary mb-3 d-flex  justify-content-around p-2">
   <div class="fs-3 text">Users</div>
-  <button type="button" class="btn btn-light m-1 fw-bold" routerLink="/add">+ Add</button>
+  <button type="button" class="btn btn-light m-1 fw-bold" (click)="openPopup()">+ Add</button>
 
 </nav>
 <div class="container">
@@ -31,5 +31,53 @@
     </table>
   </div>
   </div>
+</div>
 
+<!-- ============================================================================ -->
+
+
+
+
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="displayForm">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add User</h4>
+      </div>
+      <div class="modal-body">
+        <div class="m-auto">
+          <div class="col-sm-6 m-auto">
+            <label class="form-label">Name</label>
+            <input [(ngModel)]="AllUsers.name" type="text" class="form-control"
+              placeholder="Name" maxlength="20" required />
+              <p [ngClass]="!AllUsers.name ? 'd-flex text-danger justify-content-center fst-italic':'d-none'">Field Is Required</p>
+          </div>
+          <div class="col-sm-6 m-auto">
+            <label class="form-label">Email</label>
+            <input [(ngModel)]="AllUsers.email" type="email" class="form-control"
+              placeholder="Email" required />
+              <p [ngClass]="!AllUsers.email ? 'd-flex text-danger justify-content-center fst-italic':'d-none'">Field Is Required</p>
+          </div>
+          <div class="col-sm-6 m-auto">
+            <label class="form-label">Phone</label>
+            <input [(ngModel)]="AllUsers.phone" type="text" class="form-control"
+              placeholder="Phone" maxlength="11" minlength="8" required />
+              <p [ngClass]="!AllUsers.phone ? 'd-flex text-danger justify-content-center fst-italic':'d-none'">Field Is Required</p>
+          </div>
+          <div class="col-sm-6 m-auto">
+            <label class="form-label">Address</label>
+            <input [(ngModel)]="AllUsers.address" type="text" class="form-control" placeholder="City" required />
+            <p [ngClass]="!AllUsers.address ? 'd-flex text-danger justify-content-center fst-italic':'d-none'">Field Is Required</p>
+          </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <input type="button" class="btn btn-warning" value="Add"
+          (click)="addUser()" />
+        <button type="button" class="btn btn-success" (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
